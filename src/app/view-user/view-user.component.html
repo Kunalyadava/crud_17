@@ -1,0 +1,35 @@
+@if(user){
+<div class="dev">
+    <h2>User Information</h2>
+    <p><strong>ID:</strong> {{ user.id }}</p>
+    <p><strong>Name:</strong> {{ user.personalInfo.firstName }} {{ user.personalInfo.lastName }}</p>
+    <p><strong>Date of Birth:</strong> {{ user.personalInfo.dob }}</p>
+    <p><strong>Email:</strong> {{ user.personalInfo.email }}</p>
+    <p><strong>Mobile:</strong> {{ user.personalInfo.mobile }}</p>
+    <p><strong>Gender:</strong> {{ user.gender }}</p>
+    <hr>
+    <h3><b>Skills</b></h3>
+    @for(skill of user.skills;track skill){
+    <ul>
+        <li>{{ skill }}</li>
+    </ul>
+    }
+
+    <hr>
+
+    <h3><b>Address</b></h3>
+    <ul>
+        @for(address of user.address;track address){
+        <li>
+            <p><strong>State:</strong> {{ address.state }}</p>
+            <p><strong>District:</strong> {{ address.district }}</p>
+            <p><strong>Location:</strong> {{ address.location }}</p>
+        </li>
+        }
+    </ul>
+</div>
+<button (click)="goBack($event)">Go bacK</button>
+}
+@else{
+    <div>User Data Doesn't Exist</div>
+}

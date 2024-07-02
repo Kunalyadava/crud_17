@@ -1,0 +1,87 @@
+<div class="form-group">
+    <form action="" [formGroup]="userForm" (ngSubmit)="Submit()">
+        <div formGroupName="personalInfo">
+            <div>
+                <label for="First Name">First Name</label>
+                <input type="text" placeholder="firstName" formControlName="firstName" autocomplete="additional-fname">
+            </div>
+            <div>
+                <label for="Last Name"> Last Name</label>
+                <input type="text" placeholder="lastName" autocomplete="additional-lname" formControlName="lastName">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" placeholder="Email" autocomplete="additional-email" formControlName="email">
+            </div>
+            <div>
+                <label for="dob">DOB</label>
+                <input type="date" placeholder="Date of Birth" autocomplete="additional-email" formControlName="dob">
+            </div>
+            <div>
+                <label for="Mobile">mobile</label>
+                <input type="number" placeholder="Mobile Number" autocomplete="additional-mobile"
+                    formControlName="mobile">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" placeholder="password" autocomplete="additional-password"
+                    formControlName="password">
+            </div>
+        </div>
+        <div formArrayName="skills">
+            <label for="skills">Skills</label>
+            <div *ngFor="let X of skills.controls; let i = index">
+                <div>
+                    <input placeholder="Skill" [formControlName]="i">
+                    <span> 
+                        <button type="button" (click)="deleteSkill(i)">Delete Skill</button>
+                    </span>
+                </div>
+            </div>
+            <button type="button" (click)="addSkills()">Add Skill</button>
+        </div>
+        <!-- <div formArrayName="skills" class="form-group">
+            <label for="skills">Skills</label>
+            <div *ngFor="let skill of skills.controls; let i = index" [formGroupName]="i">
+                <div class="form-group">
+                    <label>Skill Name</label>
+                    <input class="form-control" formControlName="skillName">
+                </div>
+                <button type="button" (click)="deleteSkill(i)">Delete Skill</button>
+            </div>
+            <button type="button" (click)="addSkill()">Add Skill</button>
+        </div> -->
+        <div>
+            <div formArrayName="address">
+
+                <div *ngFor="let x of address.controls;let i=index " [formGroupName]='i'>
+                    <span>Address {{i+1}}</span>
+                    <div>
+                        <label for="state">State</label>
+                        <input type="text" placeholder="State" formControlName="state">
+                    </div>
+                    <div>
+                        <label for="district">District</label>
+                        <input type="text" placeholder="district" formControlName="district">
+                    </div>
+                    <div>
+                        <label for="location">Location</label>
+                        <textarea name="location" id="location" formControlName="location"></textarea>
+                    </div>
+                 <button (click)="deleteAddress(i)"> <b>Delete address</b></button>
+                 <hr>
+                </div>
+            </div>
+            <button type="button" (click)="addAddress()"> Add address</button>
+        </div>
+        <div>
+            <select name="" id="" formControlName="gender">
+                <option value="" disabled>select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Male</option>
+            </select>
+        </div>
+        <button type="submit">{{data ? "Update":"Add"}}</button>
+        <button mat-dialog-close>close</button>
+    </form>
+</div>

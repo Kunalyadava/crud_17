@@ -1,0 +1,122 @@
+<div>
+    <form [formGroup]="addUser" action="" (ngSubmit)="Submit()">
+        <div class="mb-3" formGroupName="userInfo">
+            <div>
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" id="exampleFormControlInput1" placeholder="name@example.com"
+                    formControlName="email">
+                <div
+                    *ngIf="addUser.get('userInfo.email')?.invalid && (addUser.get('userInfo.email')?.dirty ||addUser.get('userInfo.email')?.touched) ">
+                    <div *ngIf="addUser.get('userInfo.email')?.errors?.['required']">Email is required</div>
+                    <div
+                        *ngIf="addUser.get('userInfo.email')?.invalid  && !addUser.get('userInfo.email')?.errors?.['required']">
+                        Email is invalid</div>
+                </div>
+            </div>
+            <!-- Validation Messages: The validation messages for email and name are shown only if the control is 
+             both invalid and dirty or touched. This ensures that error messages are displayed 
+             only after the user has interacted with the input field. -->
+            <div>
+                <label for=""> Name</label>
+                <input type="text" formControlName="name" placeholder="Name">
+                <div *ngIf="addUser.get('userInfo.name')?.invalid && (addUser.get('userInfo.name')?.dirty)||
+                 (addUser.get('userInfo.name')?.touched)">
+                    <div *ngIf="addUser.get('userInfo.name')?.errors?.['required']">
+                        Name is required
+                    </div>
+                    <div *ngIf="addUser.get('userInfo.name')?.errors?.['pattern']">
+                        Name cannot contain '.' or '/
+                    </div>
+                    <div *ngIf="addUser.get('userInfo.name')?.errors?.['minlength']">
+                        Name cannot be too small
+                    </div>
+                    <div *ngIf="addUser.get('userInfo.name')?.errors?.['maxlength']">
+                        Name cannot be too Large
+                    </div>
+                </div>
+            </div>
+            <!-- When you input invalid characters like '.' or '/' into the name field and then interact with 
+            the form (e.g., click somewhere else triggering touched, or try to submit the form), the 
+            pattern error object should be populated within the errors property of your form control. -->
+        </div>
+        <div formArrayName="hobbies">
+            <div *ngFor="let hobby of hobbies.controls;let i=index" [formGroupName]="i">
+                <div>
+                    <input type="text" formControlName="hoby" placeholder="hobbies">
+                    <div *ngIf="hobby.get('hoby')?.invalid && (hobby.get('hoby')?.dirty || hobby.get('hoby')?.touched)">
+                        <div *ngIf="hobby.get('hoby')?.errors?.['required']">Hobby is required</div>
+                    </div>
+                    <!-- <div *ngIf="addUser.get('hobbies')?.invalid && addUser.get('hobbies')?.touched || addUser.get('hobbies')?.dirty">
+                      <div *ngIf="addUser.get("hobbies")?.errors?.required"> 
+                        Hobbies are required
+                      </div>
+                    </div> -->
+                </div>
+                <button (click)="deleteHobby(i)">Delete Hobby</button>
+            </div>
+            <button (click)="addHobby()">Add Hobby</button>
+            <div *ngIf="addUser.get('hobbies')?.invalid && addUser.get('hobbies')?.touched || addUser.get('hobbies')?.dirty">
+                <div *ngIf="addUser.get('hobbies')?.errors?.['minlength']"> Min 2 hobbies are required</div>
+            </div>
+        </div>
+        <button type="submit" [disabled]="addUser.invalid">Submit</button>
+    </form>
+</div>
+<!-- In Angular forms, the concept of "dirty" is used to track whether a form control or
+form group has been modified by the user. Here's an explanation of what it means and how it works:
+
+What Does "Dirty" Mean?
+Dirty: A form control or form group becomes dirty when the user has changed its value at least once.
+ This state is used to determine if the user has interacted with the form and made changes.
+Pristine: The opposite of dirty. A form control or form group is pristine when it has not 
+been modified by the user since it was initialized or reset.
+
+Why is "Dirty" Important?
+Tracking the dirty state is useful for:
+
+Validation Feedback: Showing validation messages only after the user has 
+interacted with the form field, preventing the display of error messages for untouched fields.
+Form Submission: Determining if the form has been changed and requires saving, particularly
+in cases where you might want to prevent unnecessary submissions of unchanged forms.
+UI Behavior: Triggering specific UI behaviors, such as enabling or 
+disabling buttons based on whether any changes have been made. -->
+
+<!-- When the invalid property of a form control is true, it indicates that 
+the current value of the control does not pass all of its validators' checks. 
+
+Here’s an explanation of what each property means in the context of your Angular form control (name):
+
+Controls: This likely refers to the form controls within your Angular form group. 
+In your case, email and name are two form controls.
+
+Errors: This property is null, indicating that there are currently no 
+validation errors on the name control.
+
+Pristine: This property is false, meaning that the value of the name 
+control has been changed from its initial state.
+
+Status: The status is "INVALID", indicating that the current value of 
+the name control is not considered valid based on its validators.
+
+Touched: This property is true, indicating that the name control has 
+been blurred (focused and then unfocused), which typically triggers 
+showing validation errors if the control is invalid.
+
+Value: The value of the name control is { email: '', name: 'bvcxbcx' }, 
+where 'bvcxbcx' is the current input value.
+
+Explanation of invalid: true
+The invalid: true property indicates that the name control does not meet 
+the validation criteria defined for it. This validation could be due 
+to various reasons depending on the validators applied:
+
+Required Validator: If Validators.required is applied to the name 
+control, it would be invalid if the field is empty ('').
+
+Pattern Validator: If a Validators.pattern validator is applied, 
+the control would be invalid if the value doesn't match the specified pattern.
+
+In your case, since the errors property is null, there are no specific validation 
+errors reported. However, the control's overall status is still "INVALID", 
+indicating that some validators (possibly Validators.required or others) 
+have determined the current value ('bvcxbcx') to be invalid. -->

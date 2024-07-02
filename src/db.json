@@ -1,0 +1,386 @@
+{
+  "User": [
+    {
+      "id": "97dd",
+      "personalInfo": {
+        "firstName": "Kunal",
+        "lastName": "Kumar",
+        "email": "InnocentKiller@bgmi",
+        "password": "!@Kunal@125",
+        "mobile": 7903438810,
+        "dob": "1999-09-08"
+      },
+      "gender": "male",
+      "skills": [
+        "sketching",
+        "Hockey"
+      ],
+      "address": [
+        {
+          "state": "Karnataka",
+          "district": "Mahalaxmi Layout",
+          "location": "KAVERInagara"
+        },
+        {
+          "state": "KARNATAkA",
+          "district": "Bangalore South",
+          "location": "RC Nagara"
+        }
+      ]
+    },
+    {
+      "id": "d7e8",
+      "personalInfo": {
+        "firstName": "Raman",
+        "lastName": "narayan",
+        "email": "InnocentKiller@pubg",
+        "password": "!@Kunal@125",
+        "mobile": 7903438810,
+        "dob": "1999-09-08"
+      },
+      "gender": "male",
+      "skills": [
+        "sketching",
+        "cricket"
+      ],
+      "address": [
+        {
+          "state": "Karnataka",
+          "district": "Mahalaxmi Layout",
+          "location": "KAVERInagara"
+        },
+        {
+          "state": "KARNATAkA",
+          "district": "Bangalore South",
+          "location": "RC Nagara123"
+        }
+      ]
+    },
+    {
+      "id": "5ddc",
+      "personalInfo": {
+        "firstName": "Ram",
+        "lastName": "yadav",
+        "email": "Ram@yadav.com",
+        "password": "bsajrfgehtgrfu",
+        "mobile": 7903438810,
+        "dob": "2024-06-25"
+      },
+      "gender": "male",
+      "skills": [
+        "talking",
+        "coding"
+      ],
+      "address": [
+        {
+          "state": "Gujrat ",
+          "district": "Nehrunagar",
+          "location": "AHmedabad"
+        }
+      ]
+    },
+    {
+      "id": "538d",
+      "personalInfo": {
+        "firstName": "ubamntu",
+        "lastName": "weuyett",
+        "email": "dfhyysrtuyrtu",
+        "password": "!@Kunal@125",
+        "mobile": 7903438810,
+        "dob": ""
+      },
+      "gender": "",
+      "skills": [],
+      "address": []
+    },
+    {
+      "id": "53f2",
+      "personalInfo": {
+        "firstName": "edtery",
+        "lastName": "rturtui",
+        "email": "teuet",
+        "password": "!@Kunal@125",
+        "mobile": 7903438810,
+        "dob": "2024-06-25"
+      },
+      "gender": "",
+      "skills": [
+        "utrui",
+        "cricket"
+      ],
+      "address": [
+        {
+          "state": "ry767856",
+          "district": "tityiuyo",
+          "location": "uyouiopui"
+        },
+        {
+          "state": "reytry",
+          "district": "rtyrtuy",
+          "location": "rtuyru"
+        }
+      ]
+    },
+    {
+      "id": "d844",
+      "personalInfo": {
+        "firstName": "tyui",
+        "lastName": "tyur",
+        "email": "tyuetyu",
+        "password": "",
+        "mobile": "",
+        "dob": "2024-06-17"
+      },
+      "gender": "female",
+      "skills": [],
+      "address": [
+        {
+          "state": "wqetery",
+          "district": "rturi",
+          "location": "euyhrir"
+        }
+      ]
+    },
+    {
+      "id": "0fbf",
+      "personalInfo": {
+        "firstName": "gjuityityi",
+        "lastName": "ytitytyiyiyi",
+        "email": "ytikuityiy@wqerwe.com",
+        "password": "",
+        "mobile": "",
+        "dob": ""
+      },
+      "gender": "",
+      "skills": [],
+      "address": []
+    }
+  ],
+  "data": [
+    {
+      "id": "699a",
+      "userInfo": {
+        "email": "sfaasdtg",
+        "name": "erterwyrt"
+      },
+      "hobbies": [
+        {
+          "hoby": ""
+        }
+      ]
+    },
+    {
+      "id": "12fb",
+      "userInfo": {
+        "email": "sfaasdtg",
+        "name": "erterwyrt"
+      },
+      "hobbies": [
+        {
+          "hoby": "sdfghfuyhrt"
+        }
+      ]
+    },
+    {
+      "id": "1a6b",
+      "userInfo": {
+        "email": "sfaasdtg",
+        "name": "erterwyrt"
+      },
+      "hobbies": [
+        {
+          "hoby": "sdfghfuyhrt"
+        }
+      ]
+    },
+    {
+      "id": "5eb9",
+      "userInfo": {
+        "email": "Kunal@gmail",
+        "name": "jkunal"
+      },
+      "hobbies": [
+        {
+          "hoby": ""
+        }
+      ]
+    },
+    {
+      "id": "14c7",
+      "userInfo": {
+        "email": "Kunal@gmail",
+        "name": "jkunal"
+      },
+      "hobbies": [
+        {
+          "hoby": ""
+        }
+      ]
+    },
+    {
+      "id": "9796",
+      "userInfo": {
+        "email": "Kunal@gmail",
+        "name": "jkunal"
+      },
+      "hobbies": [
+        {
+          "hoby": "crickwet"
+        },
+        {
+          "hoby": ""
+        }
+      ]
+    },
+    {
+      "id": "54a5",
+      "userInfo": {
+        "email": "Kunal@gmail",
+        "name": "[]"
+      },
+      "hobbies": [
+        {
+          "hoby": ""
+        }
+      ],
+      "currentDate": "2024-06-27T12:13:38.654Z"
+    },
+    {
+      "id": "a949",
+      "userInfo": {
+        "email": "Kunal@gmail",
+        "name": "kunal"
+      },
+      "hobbies": [
+        {
+          "hoby": ""
+        }
+      ],
+      "currentDate": "2024-06-27T12:13:43.344Z"
+    },
+    {
+      "id": "f84e",
+      "userInfo": {
+        "email": "Kunal@gmail",
+        "name": "kunal"
+      },
+      "hobbies": [
+        {
+          "hoby": "hockerty"
+        }
+      ],
+      "currentDate": "2024-06-27T12:13:48.108Z"
+    },
+    {
+      "id": "24b3",
+      "userInfo": {
+        "email": "Kunal@gmail",
+        "name": "xcfgh"
+      },
+      "hobbies": [
+        {
+          "hoby": ""
+        }
+      ],
+      "User_created_Date": "2024-06-27T12:25:38.822Z"
+    },
+    {
+      "id": "83e8",
+      "userInfo": {
+        "email": "Kunal@gmail",
+        "name": "xcfgh"
+      },
+      "hobbies": [
+        {
+          "hoby": "gfjghjghj"
+        },
+        {
+          "hoby": ""
+        }
+      ],
+      "User_created_Date": "2024-06-27T12:25:41.708Z"
+    },
+    {
+      "id": "7f7c",
+      "userInfo": {
+        "email": "dgdyh@fgmnail.com",
+        "name": "thfguyrtu"
+      },
+      "hobbies": [],
+      "User_created_Date": "2024-06-27T13:15:17.720Z"
+    },
+    {
+      "id": "e31d",
+      "userInfo": {
+        "email": "Kunalkasd@co",
+        "name": "Kunal"
+      },
+      "hobbies": [],
+      "User_created_Date": "2024-06-27T13:22:28.038Z"
+    },
+    {
+      "id": "810b",
+      "userInfo": {
+        "email": "Kunal@gmail.com",
+        "name": "Kunal"
+      },
+      "hobbies": [
+        {
+          "hoby": "coding"
+        },
+        {
+          "hoby": "ludo"
+        }
+      ],
+      "User_created_Date": "2024-06-28T07:28:47.765Z"
+    },
+    {
+      "id": "bd39",
+      "userInfo": {
+        "email": "Kunal@gmail.com",
+        "name": "Kunal"
+      },
+      "hobbies": [
+        {
+          "hoby": "coding"
+        },
+        {
+          "hoby": "ludo"
+        }
+      ],
+      "User_created_Date": "2024-06-28T07:28:50.362Z"
+    },
+    {
+      "id": "1919",
+      "userInfo": {
+        "email": "Ram@Anuj.com",
+        "name": "RamAnujYadav"
+      },
+      "hobbies": [
+        {
+          "hoby": "crickettt"
+        },
+        {
+          "hoby": "coding"
+        }
+      ],
+      "User_created_Date": "2024-06-28T07:30:32.960Z"
+    },
+    {
+      "id": "abef",
+      "userInfo": {
+        "email": "Kunal@yopmail.com",
+        "name": " Pravakar"
+      },
+      "hobbies": [
+        {
+          "hoby": "Designing"
+        },
+        {
+          "hoby": "UIux"
+        }
+      ],
+      "User_created_Date": "2024-06-28T07:31:55.456Z"
+    }
+  ]
+}
