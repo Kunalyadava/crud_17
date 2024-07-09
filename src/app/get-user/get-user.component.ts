@@ -72,7 +72,6 @@ export class GetUserComponent implements OnInit {
   //   },2000)
   // }
   getUsers() {
-    // this.isLoading=true
     this.http.getUsers().subscribe((res: any) => {
       console.log("getUsers", res)
       this.dataSource.data = res
@@ -80,7 +79,6 @@ export class GetUserComponent implements OnInit {
       console.log(" this.dataSource.data", this.dataSource.data)
       console.log(" this.dataSource", this.dataSource)
       console.log(" this.dataSource.paginator", this.dataSource.paginator)
-      // this.isLoading=false
     })
   }
 

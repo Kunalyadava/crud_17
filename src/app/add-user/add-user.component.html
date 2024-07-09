@@ -55,13 +55,25 @@
                 <button (click)="deleteHobby(i)">Delete Hobby</button>
             </div>
             <button (click)="addHobby()">Add Hobby</button>
-            <div *ngIf="addUser.get('hobbies')?.invalid && addUser.get('hobbies')?.touched || addUser.get('hobbies')?.dirty">
+            <div
+                *ngIf="addUser.get('hobbies')?.invalid && addUser.get('hobbies')?.touched || addUser.get('hobbies')?.dirty">
                 <div *ngIf="addUser.get('hobbies')?.errors?.['minlength']"> Min 2 hobbies are required</div>
             </div>
         </div>
+        <hr>
+        <div formArrayName="myAlbum">
+            <div *ngFor="let x of myAlbum.controls;let i=index" [formGroupName]="i">
+                <input type="file" formControlName="photos">
+                <button (click)="delete(i)">Delete</button>
+            </div>
+        </div>
+        <button (click)="addPhotos()">
+            Add Photos
+        </button>
         <button type="submit" [disabled]="addUser.invalid">Submit</button>
     </form>
 </div>
+<button (click)="goBack($event)">Go bacK</button>
 <!-- In Angular forms, the concept of "dirty" is used to track whether a form control or
 form group has been modified by the user. Here's an explanation of what it means and how it works:
 

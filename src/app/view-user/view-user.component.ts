@@ -20,13 +20,21 @@ constructor(private route:ActivatedRoute, private http:APIService){
     this.http.getUser(this.route.snapshot.queryParamMap.get('id')).subscribe({
       next:((res:any)=>{
         this.user=res
-       console.log("getUser",res)
+       console.log("getUser",res,window)
       })
     })
   }
   goBack(event:Event){
-    console.log( window.history.back())
     window.history.back()
   }
+  // goBack(event: Event): void {
+  //   console.log('Current window.history:', window.history);
+  //   console.log('History length:', window.history.length);
+  //   if (window.history.length > 1) {
+  //     window.history.back()
+  //   } else {
+  //     console.log("No previous page in the history stack.");
+  //   }
+  // }
 
 }

@@ -7,6 +7,7 @@
   <mat-form-field>
     <input type="text" matInput (keyup)="searchText($event)" placeholder="search">
   </mat-form-field>
+  <button routerLink="play-msg-msg">CHAT PAGE </button>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- ID Column -->
@@ -56,7 +57,11 @@
       <th mat-header-cell *matHeaderCellDef> Address </th>
       <td mat-cell *matCellDef="let element">
         <div *ngFor="let x of element.address">
-          {{ x.state }}, {{ x.district }}, {{ x.location }}
+          State: {{ x.state }}, 
+          <br>
+          District :{{ x.district }},
+          <br>
+          Location: {{ x.location }}
         </div>
       </td>
     </ng-container>

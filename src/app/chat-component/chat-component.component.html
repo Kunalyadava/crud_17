@@ -1,0 +1,63 @@
+
+<div class="chat-container">
+  <div class="header">
+    <h1>Chat</h1>
+    <button *ngIf="selectedMessageId" (click)="deleteMessage()">Delete</button>
+  </div>
+
+  <div class="messages">
+    <div *ngFor="let message of messages" class="message"
+    [ngClass]="{'me': message.sender === 'me', 'them': message.sender === 'them'}"
+    (click)="selectMessage(message.id)">
+    <ng-container [ngSwitch]="message.type">
+      <div *ngSwitchCase="'text'">{{ message.content }}</div>
+      <div *ngSwitchCase="'image'" class="media-container">
+        <img [src]="message.content" alt="Image" class="media-item">
+      </div>
+      <div *ngSwitchCase="'video'" class="media-container">
+        <video [src]="message.content" controls class="media-item"></video>
+      </div>
+    </ng-container>
+  </div>
+  
+  </div>
+
+
+  <div *ngIf="selectedFiles.length > 0" class="file-slider">
+    <button mat-icon-button (click)="prevFile()" [disabled]="currentIndex === 0">
+      <i class="material-icons">chevron_left</i>
+    </button>
+    <div class="file-slide">
+      <div class="media-container">
+        <img *ngIf="selectedFiles[currentIndex]?.type.startsWith('image')" [src]="selectedFiles[currentIndex].base64" alt="Selected Image" class="media-item" />
+        <video *ngIf="selectedFiles[currentIndex]?.type.startsWith('video')" controls class="media-item">
+          <source [src]="selectedFiles[currentIndex].base64" [type]="selectedFiles[currentIndex].type" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <button mat-icon-button (click)="removeFile(currentIndex)">
+        <i class="material-icons">delete</i>
+      </button>
+    </div>
+    <button mat-icon-button (click)="nextFile()" [disabled]="currentIndex === selectedFiles.length - 1">
+      <i class="material-icons">chevron_right</i>
+    </button>
+  </div>
+
+  <form class="example-form" (submit)="sendTextMessage($event)">
+    <mat-form-field class="mat-form example-full-width">
+      <div class="input-with-icon">
+        <input type="text" matInput placeholder="Enter your message here..." name="message" [(ngModel)]="messageContent" />
+        <button type="button" class="chat-submit" id="chat-submit" mat-icon-button (click)="sendTextMessage($event)"    (click)="sendFiles()">
+          <i class="material-icons">send</i>
+        </button>
+        <button type="button" mat-icon-button (click)="fileInput.click()">
+          <i class="material-icons">attach_file</i>
+        </button>
+        <input #fileInput type="file" (change)="onFileSelected($event)" multiple accept="image/*,video/*" style="display: none;" />
+      </div>
+    </mat-form-field>
+  </form>
+
+  <!-- <button mat-button (click)="sendFiles()">Send Files</button> -->
+</div>
