@@ -1,78 +1,166 @@
 <div>
-    <form [formGroup]="addUser" action="" (ngSubmit)="Submit()">
-        <div class="mb-3" formGroupName="userInfo">
-            <div>
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" id="exampleFormControlInput1" placeholder="name@example.com"
-                    formControlName="email">
-                <div
-                    *ngIf="addUser.get('userInfo.email')?.invalid && (addUser.get('userInfo.email')?.dirty ||addUser.get('userInfo.email')?.touched) ">
-                    <div *ngIf="addUser.get('userInfo.email')?.errors?.['required']">Email is required</div>
-                    <div
-                        *ngIf="addUser.get('userInfo.email')?.invalid  && !addUser.get('userInfo.email')?.errors?.['required']">
-                        Email is invalid</div>
-                </div>
-            </div>
-            <!-- Validation Messages: The validation messages for email and name are shown only if the control is 
+  <form [formGroup]="addUser" action="" (ngSubmit)="Submit()">
+    <div class="mb-3" formGroupName="userInfo">
+      <div>
+        <label for="exampleFormControlInput1" class="form-label"
+          >Email address</label
+        >
+        <input
+          type="email"
+          id="exampleFormControlInput1"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <div
+          *ngIf="
+            addUser.get('userInfo.email')?.invalid &&
+            (addUser.get('userInfo.email')?.dirty ||
+              addUser.get('userInfo.email')?.touched)
+          "
+          class="error-message"
+        >
+          <div *ngIf="addUser.get('userInfo.email')?.errors?.['required']">
+            Email is required
+          </div>
+          <div
+            *ngIf="addUser.get('userInfo.email')?.invalid  && !addUser.get('userInfo.email')?.errors?.['required']"
+          >
+            Email is invalid
+          </div>
+        </div>
+      </div>
+
+      <!-- Validation Messages: The validation messages for email and name are shown only if the control is 
              both invalid and dirty or touched. This ensures that error messages are displayed 
              only after the user has interacted with the input field. -->
-            <div>
-                <label for=""> Name</label>
-                <input type="text" formControlName="name" placeholder="Name">
-                <div *ngIf="addUser.get('userInfo.name')?.invalid && (addUser.get('userInfo.name')?.dirty)||
-                 (addUser.get('userInfo.name')?.touched)">
-                    <div *ngIf="addUser.get('userInfo.name')?.errors?.['required']">
-                        Name is required
-                    </div>
-                    <div *ngIf="addUser.get('userInfo.name')?.errors?.['pattern']">
-                        Name cannot contain '.' or '/
-                    </div>
-                    <div *ngIf="addUser.get('userInfo.name')?.errors?.['minlength']">
-                        Name cannot be too small
-                    </div>
-                    <div *ngIf="addUser.get('userInfo.name')?.errors?.['maxlength']">
-                        Name cannot be too Large
-                    </div>
-                </div>
-            </div>
-            <!-- When you input invalid characters like '.' or '/' into the name field and then interact with 
+      <div>
+        <label for=""> Name</label>
+        <input type="text" formControlName="name" placeholder="Name" />
+        <div
+          *ngIf="
+            (addUser.get('userInfo.name')?.invalid &&
+              addUser.get('userInfo.name')?.dirty) ||
+            addUser.get('userInfo.name')?.touched
+          "
+          class="error-message"
+        >
+          <div *ngIf="addUser.get('userInfo.name')?.errors?.['required']">
+            Name is required
+          </div>
+          <div *ngIf="addUser.get('userInfo.name')?.errors?.['pattern']">
+            Name cannot contain '.' or '/
+          </div>
+          <div *ngIf="addUser.get('userInfo.name')?.errors?.['minlength']">
+            Name cannot be too small
+          </div>
+          <div *ngIf="addUser.get('userInfo.name')?.errors?.['maxlength']">
+            Name cannot be too Large
+          </div>
+        </div>
+      </div>
+      <!-- When you input invalid characters like '.' or '/' into the name field and then interact with 
             the form (e.g., click somewhere else triggering touched, or try to submit the form), the 
             pattern error object should be populated within the errors property of your form control. -->
-        </div>
-        <div formArrayName="hobbies">
-            <div *ngFor="let hobby of hobbies.controls;let i=index" [formGroupName]="i">
-                <div>
-                    <input type="text" formControlName="hoby" placeholder="hobbies">
-                    <div *ngIf="hobby.get('hoby')?.invalid && (hobby.get('hoby')?.dirty || hobby.get('hoby')?.touched)">
-                        <div *ngIf="hobby.get('hoby')?.errors?.['required']">Hobby is required</div>
-                    </div>
-                    <!-- <div *ngIf="addUser.get('hobbies')?.invalid && addUser.get('hobbies')?.touched || addUser.get('hobbies')?.dirty">
+    </div>
+    <div formArrayName="hobbies">
+      <div
+        *ngFor="let hobby of hobbies.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div>
+          <input type="text" formControlName="hoby" placeholder="hobbies" />
+          <div
+            *ngIf="
+              hobby.get('hoby')?.invalid &&
+              (hobby.get('hoby')?.dirty || hobby.get('hoby')?.touched)
+            "
+            class="error-message"
+          >
+            <div *ngIf="hobby.get('hoby')?.errors?.['required']">
+              Hobby is required
+            </div>
+          </div>
+          <!-- <div *ngIf="addUser.get('hobbies')?.invalid && addUser.get('hobbies')?.touched || addUser.get('hobbies')?.dirty">
                       <div *ngIf="addUser.get("hobbies")?.errors?.required"> 
                         Hobbies are required
                       </div>
                     </div> -->
-                </div>
-                <button (click)="deleteHobby(i)">Delete Hobby</button>
-            </div>
-            <button (click)="addHobby()">Add Hobby</button>
-            <div
-                *ngIf="addUser.get('hobbies')?.invalid && addUser.get('hobbies')?.touched || addUser.get('hobbies')?.dirty">
-                <div *ngIf="addUser.get('hobbies')?.errors?.['minlength']"> Min 2 hobbies are required</div>
-            </div>
         </div>
-        <hr>
-        <div formArrayName="myAlbum">
-            <div *ngFor="let x of myAlbum.controls;let i=index" [formGroupName]="i">
-                <input type="file" formControlName="photos">
-                <button (click)="delete(i)">Delete</button>
-            </div>
+        <button (click)="deleteHobby(i)">Delete Hobby</button>
+      </div>
+      <button (click)="addHobby()">Add Hobby</button>
+      <div
+        *ngIf="
+          (addUser.get('hobbies')?.invalid &&
+            addUser.get('hobbies')?.touched) ||
+          addUser.get('hobbies')?.dirty
+        "
+        class="error-message"
+      >
+        <div *ngIf="addUser.get('hobbies')?.errors?.['minlength']">
+          Min 2 hobbies are required
         </div>
-        <button (click)="addPhotos()">
-            Add Photos
-        </button>
-        <button type="submit" [disabled]="addUser.invalid">Submit</button>
-    </form>
+      </div>
+    </div>
+    <hr />
+    <div formArrayName="myAlbum">
+      <div
+        *ngFor="let x of myAlbum.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <input type="file" formControlName="photos" />
+        <button (click)="delete(i)">Delete</button>
+      </div>
+    </div>
+    <button (click)="addPhotos()">Add Photos</button>
+
+    <div>
+      <label for="profilePicture">Profile Picture</label>
+      <input
+        type="file"
+        id="profilePicture"
+        (change)="handleProfilePictureInput($event)"
+      />
+      <img
+        *ngIf="profilePicture"
+        [src]="profilePicture"
+        alt="Profile Picture Preview"
+        style="max-width: 200px; max-height: 200px"
+      />
+    </div>
+
+    <div>
+      <label for="country">Country</label>
+      <select id="country" formControlName="country">
+        <option value="" disabled>Select Country</option>
+        <option *ngFor="let country of countries" [value]="country">
+          {{ country }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="state">State</label>
+      <select id="state" formControlName="state">
+        <option value="" disabled>Select State</option>
+        <option *ngFor="let state of filteredStates" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+    </div>
+    <div *ngIf="filteredDistricts.length > 0">
+      <label for="district">District</label>
+      <select id="district" formControlName="district">
+        <option value="" disabled>Select District</option>
+        <option *ngFor="let district of filteredDistricts" [value]="district">
+          {{ district }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="addUser.invalid">Submit</button>
+  </form>
 </div>
+
 <button (click)="goBack($event)">Go bacK</button>
 <!-- In Angular forms, the concept of "dirty" is used to track whether a form control or
 form group has been modified by the user. Here's an explanation of what it means and how it works:
