@@ -1,0 +1,115 @@
+
+<table class="styled-table">
+    <thead>
+      <tr>
+        <th>+</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Location</th>
+        <th>State</th>
+        <th>Dist</th>
+        <th>City</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+ 
+      <tr>
+        <td><button (click)="toggleRow(0)">{{ expandedRow === 0 ? '-' : '+' }}</button></td>
+        <td>{{ name }}</td>
+        <td>{{ age }}</td>
+        <td>{{ email }}</td>
+        <td>{{ location }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  
+   
+      <ng-container *ngIf="expandedRow === 0">
+        <tr *ngFor="let place of data">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{ place.state }}</td>
+          <td>{{ place.dist }}</td>
+          <td>{{ place.city }}</td>
+          <td></td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+   <table class="styled-table">
+    <thead>
+      <tr>
+        <th>+</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Location</th>
+        <th>State</th>
+        <th>District</th>
+        <th>City</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>
+          <button (click)="toggleRow()">
+            {{ isRowExpanded ? '-' : '+' }}
+          </button>
+        </td>
+        <td>{{ name }}</td>
+        <td>{{ age }}</td>
+        <td>{{ email }}</td>
+        <td>{{ location }}</td>
+        <td colspan="3"></td>
+        <td></td>
+      </tr>
+  
+
+      <ng-container *ngIf="isRowExpanded">
+        <tr *ngFor="let place of data">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{ place.state }}</td>
+          <td>{{ place.dist }}</td>
+          <td>{{ place.city }}</td>
+          <td></td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+   -->

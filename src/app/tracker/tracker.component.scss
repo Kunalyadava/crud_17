@@ -1,0 +1,48 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.filter-field {
+  width: 100%;
+}
+
+.search-button {
+  margin-top: 0;
+  margin-right: 4px;
+  margin-bottom: 38px;
+  margin-left: 4px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #ddd;
+}
+
+.table th {
+  background-color: rgb(169, 218, 240);
+  color: rgb(44, 43, 43);
+}
+
+.table td, .table th {
+  text-align: center;
+}
+
+
+.expanded-btn {
+  background-color: rgb(122, 40, 40);
+  color: white;
+  border: none;
+}
+
+
+.collapsed-btn {
+  background-color: green;
+  color: white;
+  border: none;
+}

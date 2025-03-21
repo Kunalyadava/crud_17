@@ -11,6 +11,7 @@ import { ChatMessage } from './chat-component/chat.modal';
 })
 export class APIService {
   API_URL: string = env.API
+  private apiUrl = 'http://103.92.47.69/hitechErp/Api/Accounting/CashierAccountingCashRecieve.php';
   API: string = 'http://localhost:3000/data'
   CHAT: string = 'http://localhost:3000/chat'
   constructor(private http: HttpClient) { }
@@ -32,6 +33,13 @@ export class APIService {
   Adduser(data: any) {
     return this.http.post(`${this.API}`, data)
   }
+  getAddedUser() {
+    return this.http.get(`${this.API}`)
+  }
+  updateAddedUSer(data: any) {
+    return this.http.patch(`${this.API}`, data)
+  }
+
   // addChatMessage(data: any): Observable<ChatMessage> {
   //   return this.http.post<ChatMessage>(`${this.API_URL}`, data);
   // }
@@ -47,5 +55,7 @@ export class APIService {
   deleteChatMessage(id: string): Observable<void> {
     return this.http.delete<void>(`${this.CHAT}/${id}`);
   }
-  
+  fetchTrackerData(payload: any): Observable<any> {
+    return this.http.post(this.apiUrl, payload);
+  }
 }

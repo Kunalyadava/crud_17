@@ -29,10 +29,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Validation Messages: The validation messages for email and name are shown only if the control is 
-             both invalid and dirty or touched. This ensures that error messages are displayed 
-             only after the user has interacted with the input field. -->
       <div>
         <label for=""> Name</label>
         <input type="text" formControlName="name" placeholder="Name" />
@@ -58,9 +54,6 @@
           </div>
         </div>
       </div>
-      <!-- When you input invalid characters like '.' or '/' into the name field and then interact with 
-            the form (e.g., click somewhere else triggering touched, or try to submit the form), the 
-            pattern error object should be populated within the errors property of your form control. -->
     </div>
     <div formArrayName="hobbies">
       <div
@@ -80,11 +73,6 @@
               Hobby is required
             </div>
           </div>
-          <!-- <div *ngIf="addUser.get('hobbies')?.invalid && addUser.get('hobbies')?.touched || addUser.get('hobbies')?.dirty">
-                      <div *ngIf="addUser.get("hobbies")?.errors?.required"> 
-                        Hobbies are required
-                      </div>
-                    </div> -->
         </div>
         <button (click)="deleteHobby(i)">Delete Hobby</button>
       </div>
@@ -162,6 +150,7 @@
 </div>
 
 <button (click)="goBack($event)">Go bacK</button>
+
 <!-- In Angular forms, the concept of "dirty" is used to track whether a form control or
 form group has been modified by the user. Here's an explanation of what it means and how it works:
 

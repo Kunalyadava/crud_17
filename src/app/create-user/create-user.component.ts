@@ -25,7 +25,9 @@ export class CreateUserComponent implements OnInit {
         email: ['', [Validators.required]],
         password: ['', [Validators.required]],
         mobile: ['', [Validators.required]],
-        dob: ['', [Validators.required]]
+        dob: ['', [Validators.required]],
+        accountNumber: ['', Validators.required],
+        confirmAccountNumber: ['', Validators.required],
       }),
       gender: ['', [Validators.required]],
       skills: this.fb.array([]),
@@ -57,7 +59,7 @@ export class CreateUserComponent implements OnInit {
   // addSkill(): void {
   //   this.skills.push(this.fb.group({skillName: ['', Validators.required] }));
   // }
-  addSkills(): void {
+  addSkill(): void {
     this.skills.push(this.fb.control('', Validators.required));
   }
   deleteSkill(index: number): void {
@@ -76,7 +78,7 @@ export class CreateUserComponent implements OnInit {
   deleteAddress(i: number) {
     this.address.removeAt(i)
   }
-  Submit() {
+  onSubmit() {
     if (!this.data) {
       console.log(this.userForm.value)
       this.http.createUser(this.userForm.value).subscribe({

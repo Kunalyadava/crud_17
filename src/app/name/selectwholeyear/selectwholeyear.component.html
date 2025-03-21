@@ -1,0 +1,37 @@
+<form class="register-form mt-4" [formGroup]="searchOPDForm">
+    <div class="row">
+      <!-- Financial Year -->
+      <div class="col-2 col-sm-6 col-md-2 col-lg-2 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Financial Year</mat-label>
+          <mat-select formControlName="financialYearId" (selectionChange)="onSelectionChange($event)">
+            <mat-option *ngFor="let year of financialYears" [value]="year.financialYearId">
+              {{ year.financialYear }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <!-- Select Month (Checkboxes) -->
+      <div class="col-2 col-sm-6 col-md-2 col-lg-2 mb-2">
+        <mat-label>Select Month</mat-label>
+  
+        <!-- Select All Checkbox -->
+        <mat-checkbox (change)="toggleSelectAll($event)">Select All</mat-checkbox>
+  
+        <!-- Individual Month Checkboxes -->
+        <div *ngFor="let month of months">
+          <mat-checkbox 
+            (change)="toggleMonthSelection(month.id, $event)"
+            [checked]="isMonthSelected(month.id)">
+            {{ month.name }}
+          </mat-checkbox>
+        </div>
+      </div>
+  
+      <div style="text-align: center; margin-top: 2px" class="col-1 col-sm-6 col-md-1 col-lg-1 mb-2">
+        <button type="button" mat-raised-button color="primary" (click)="search()">Search</button>
+      </div>
+    </div>
+  </form>
+  

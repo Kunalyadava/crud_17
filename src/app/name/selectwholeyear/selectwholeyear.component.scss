@@ -1,0 +1,88 @@
+/* General Styles for the Form */
+.register-form {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Grid System */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Each Form Field Styling */
+.mat-form-field {
+    width: 100%;
+}
+
+/* Adjust form control sizes for responsiveness */
+.col-2, .col-sm-6, .col-md-2, .col-lg-2 {
+    flex: 1 1 20%;
+    max-width: 20%;
+}
+
+/* Styling for Select Elements */
+mat-select {
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/* Styling for the Date Picker */
+.mat-datepicker-toggle {
+    padding: 5px;
+}
+
+/* Search Button Styling */
+button {
+    padding: 8px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+    border: 2px solid #0056b3;
+}
+
+/* Margin adjustment for bottom spacing */
+.mb-2 {
+    margin-bottom: 15px;
+}
+
+/* Center the search button */
+button {
+    text-align: center;
+}
+
+/* Form Label Styling */
+mat-label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Small adjustments for smaller screens */
+@media (max-width: 576px) {
+    .col-2, .col-sm-6, .col-md-2, .col-lg-2 {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .register-form {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

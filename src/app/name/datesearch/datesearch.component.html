@@ -1,0 +1,61 @@
+
+<form class="register-form mt-4" [formGroup]="searchOPDForm">
+    <div class="row">
+        <!-- Financial Year -->
+        <div class="col-2 col-sm-6 col-md-2 col-lg-2 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Financial Year</mat-label>
+                <mat-select formControlName="financialYearId"
+                    (selectionChange)="onSelectionChange($event)">
+                    <mat-option *ngFor="let year of financialYears" [value]="year.financialYearId">
+                        {{ year.financialYear }}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+        </div>
+        <!-- Select Month -->
+        <div class="col-2 col-sm-6 col-md-2 col-lg-2 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Select Month</mat-label>
+                <mat-select formControlName="month" (selectionChange)="onMonthChange($event)">
+                    <mat-option *ngFor="let month of months" [value]="month.value" [disabled]="disabledMonths.has(month.value)">
+                        {{ month.name }}
+                      </mat-option>
+                      
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <!-- From Date -->
+        <div class="col-2 col-sm-6 col-md-2 col-lg-2 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>From Date</mat-label>
+                <input matInput [matDatepicker]="startDatePicker" formControlName="startDate"
+                    placeholder="Select start date" [min]="minStartDate" [max]="maxStartDate">
+                <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #startDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <!-- To Date -->
+        <div class="col-2 col-sm-6 col-md-2 col-lg-2 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>To</mat-label>
+                <input matInput [matDatepicker]="endDatePicker" formControlName="endDate"
+                    placeholder="Select end date" [min]="minEndDate" [max]="maxEndDate">
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #endDatePicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+
+        <!-- Search Button -->
+        <div style="text-align: center; margin-top: 2px" class="col-1 col-sm-6 col-md-1 col-lg-1 mb-2">
+            <button type="button" mat-raised-button color="primary" (click)="Search()">
+                Search
+            </button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,185 @@
+<mat-tab-group [(selectedIndex)]="selectedTabIndex">
+  <mat-tab label="Cashier Accounting Cash Receive"></mat-tab>
+  <mat-tab label="Cashier Cash Received Tracker"></mat-tab>
+  <mat-tab label="Cashier Acng. Cash Movement"></mat-tab>
+  <mat-tab label="Cashier Acng. Cash Movement Tracker"></mat-tab>
+  <mat-tab label="Accounts Reports"></mat-tab>
+</mat-tab-group>
+
+<div class="tracker-container">
+  <div class="card">
+    <mat-card-header>
+      <mat-card-title>Cashier Cash Received Tracker</mat-card-title>
+    </mat-card-header>
+    <div class="card-body">
+      <mat-card-content>
+        <form [formGroup]="trackerForm" class="filters">
+          <mat-form-field appearance="outline">
+            <mat-label>Financial Year</mat-label>
+            <mat-select formControlName="financialYear">
+              <mat-option *ngFor="let year of financialYears" [value]="year">
+                {{ year.year }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>From</mat-label>
+            <input matInput [matDatepicker]="fromPicker" formControlName="fromDate" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+            <mat-datepicker #fromPicker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>To</mat-label>
+            <input matInput [matDatepicker]="toPicker" formControlName="toDate" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+            <mat-datepicker #toPicker></mat-datepicker>
+          </mat-form-field>
+
+          <button type="button" class="btn btn-primary search-button" (click)="search()">Search</button>
+        </form>
+      </mat-card-content>
+      <table class="table table-striped table-bordered mt-4">
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Date</th>
+            <th>Bill Manager</th>
+            <th>Counter Type</th>
+            <th>Counter Name</th>
+            <th>User Sessions</th>
+            <th>Users</th>
+            <th>User Session Status</th>
+            <th>System Cash Closing Balance</th>
+            <th>Cash Received Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let element of dataSource">
+         
+            <tr *ngIf="element.levels === 1">
+              <td>
+                <button class="btn" 
+                        [ngClass]="{
+                          'expanded-btn': element.expanded, 
+                          'collapsed-btn': !element.expanded
+                        }" 
+                        (click)="toggleRowExpansion(element)">
+                  <i class="bi" [ngClass]="element.expanded ? 'bi-dash' : 'bi-plus'"></i>
+                </button>
+              </td>
+              <td>{{ element.transactionDate | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ element.billManager }}</td>
+              <td>{{ element.counterType }}</td>
+              <td>{{ element.counterName }}</td>
+              <td>{{ element.userSession }}</td>
+              <td>{{ element.users }}</td>
+              <td>{{ element.userSessionStatus }}</td>
+              <td>{{ element.sysCashClosingBalance }}</td>
+              <td>{{ element.cashRcvAmt }}</td>
+            </tr>
+      
+          
+            <ng-container *ngIf="element.expanded">
+              <ng-container *ngFor="let child of dataSource">
+                <tr *ngIf="child.levels === 2 && child.parentLink === element.transactionDate">
+                  <td>
+                    <button class="btn" 
+                            [ngClass]="{
+                              'expanded-btn': child.expanded, 
+                              'collapsed-btn': !child.expanded
+                            }" 
+                            (click)="toggleRowExpansion(child)">
+                      <i class="bi" [ngClass]="child.expanded ? 'bi-dash' : 'bi-plus'"></i>
+                    </button>
+                  </td>
+                  <td></td>
+                  <td>{{ child.billManager }}</td>
+                  <td>{{ child.counterType }}</td>
+                  <td>{{ child.counterName }}</td>
+                  <td>{{ child.userSession }}</td>
+                  <td>{{ child.users }}</td>
+                  <td>{{ child.userSessionStatus }}</td>
+                  <td>{{ child.sysCashClosingBalance }}</td>
+                  <td>{{ child.cashRcvAmt }}</td>
+                </tr>
+      
+
+                <ng-container *ngIf="child.expanded">
+                  <ng-container *ngFor="let grandChild of dataSource">
+                    <tr *ngIf="grandChild.levels === 3 && grandChild.parentLink === child.billManager">
+                      <td>
+                        <button class="btn" 
+                                [ngClass]="{
+                                  'expanded-btn': grandChild.expanded, 
+                                  'collapsed-btn': !grandChild.expanded
+                                }" 
+                                (click)="toggleRowExpansion(grandChild)">
+                          <i class="bi" [ngClass]="grandChild.expanded ? 'bi-dash' : 'bi-plus'"></i>
+                        </button>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td>{{ grandChild.counterType }}</td>
+                      <td>{{ grandChild.counterName }}</td>
+                      <td>{{ grandChild.userSession }}</td>
+                      <td>{{ grandChild.users }}</td>
+                      <td>{{ grandChild.userSessionStatus }}</td>
+                      <td>{{ grandChild.sysCashClosingBalance }}</td>
+                      <td>{{ grandChild.cashRcvAmt }}</td>
+                    </tr>
+      
+                    <ng-container *ngIf="grandChild.expanded">
+                      <ng-container *ngFor="let greatGrandChild of dataSource">
+                        <tr *ngIf="greatGrandChild.levels === 4 && greatGrandChild.parentLink === grandChild.counterType">
+                          <td>
+                            <button class="btn" 
+                                    [ngClass]="{
+                                      'expanded-btn': greatGrandChild.expanded, 
+                                      'collapsed-btn': !greatGrandChild.expanded
+                                    }" 
+                                    (click)="toggleRowExpansion(greatGrandChild)">
+                              <i class="bi" [ngClass]="greatGrandChild.expanded ? 'bi-dash' : 'bi-plus'"></i>
+                            </button>
+                          </td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>{{ greatGrandChild.counterName }}</td>
+                          <td>{{ greatGrandChild.userSession }}</td>
+                          <td>{{ greatGrandChild.users }}</td>
+                          <td>{{ greatGrandChild.userSessionStatus }}</td>
+                          <td>{{ greatGrandChild.sysCashClosingBalance }}</td>
+                          <td>{{ greatGrandChild.cashRcvAmt }}</td>
+                        </tr>
+      
+             
+                        <ng-container *ngIf="greatGrandChild.expanded">
+                          <ng-container *ngFor="let greatGreatGrandChild of dataSource">
+                            <tr *ngIf="greatGreatGrandChild.levels === 5 && greatGreatGrandChild.parentLink === greatGrandChild.counterName">
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td>{{ greatGreatGrandChild.userSession }}</td>
+                              <td>{{ greatGreatGrandChild.users }}</td>
+                              <td>{{ greatGreatGrandChild.userSessionStatus }}</td>
+                              <td>{{ greatGreatGrandChild.sysCashClosingBalance }}</td>
+                              <td>{{ greatGreatGrandChild.cashRcvAmt }}</td>
+                            </tr>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

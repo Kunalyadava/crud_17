@@ -1,4 +1,4 @@
-<div class="form-group">
+<!-- <div class="form-group">
     <form action="" [formGroup]="userForm" (ngSubmit)="Submit()">
         <div formGroupName="personalInfo">
             <div>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <button type="button" (click)="addSkills()">Add Skill</button>
-        </div>
+        </div> -->
         <!-- <div formArrayName="skills" class="form-group">
             <label for="skills">Skills</label>
             <div *ngFor="let skill of skills.controls; let i = index" [formGroupName]="i">
@@ -51,7 +51,7 @@
             </div>
             <button type="button" (click)="addSkill()">Add Skill</button>
         </div> -->
-        <div>
+        <!-- <div>
             <div formArrayName="address">
 
                 <div *ngFor="let x of address.controls;let i=index " [formGroupName]='i'>
@@ -83,5 +83,95 @@
         </div>
         <button type="submit">{{data ? "Update":"Add"}}</button>
         <button mat-dialog-close>close</button>
+    </form>
+</div> -->
+
+<div class="form-group">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="personalInfo">
+            <div>
+                <label for="firstName">First Name</label>
+                <input type="text" placeholder="First Name" formControlName="firstName" autocomplete="additional-fname">
+            </div>
+            <div>
+                <label for="lastName">Last Name</label>
+                <input type="text" placeholder="Last Name" formControlName="lastName" autocomplete="additional-lname">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" placeholder="Email" formControlName="email" autocomplete="additional-email">
+            </div>
+            <div>
+                <label for="dob">DOB</label>
+                <input type="date" placeholder="Date of Birth" formControlName="dob" autocomplete="additional-dob">
+            </div>
+            <div>
+                <label for="mobile">Mobile</label>
+                <input type="number" placeholder="Mobile Number" formControlName="mobile" autocomplete="additional-mobile">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" formControlName="password" autocomplete="additional-password">
+            </div>
+            <!-- <div>
+                <label for="accountNumber">Account Number</label>
+                <input type="password" placeholder="Account Number" formControlName="accountNumber">
+            </div>
+            <div>
+                <label for="confirmAccountNumber">Confirm Account Number</label>
+                <input type="password" placeholder="Confirm Account Number" formControlName="confirmAccountNumber">
+            </div> -->
+            <div>
+                <label for="accountNumber">Account Number</label>
+                <input type="text" placeholder="Account Number" formControlName="accountNumber" class="masked-input">
+            </div>
+            <div>
+                <label for="confirmAccountNumber">Confirm Account Number</label>
+                <input type="text" placeholder="Confirm Account Number" formControlName="confirmAccountNumber" class="masked-input">
+            </div>
+        </div>
+        <div formArrayName="skills">
+            <label for="skills">Skills</label>
+            <div *ngFor="let skill of skills.controls; let i = index">
+                <div>
+                    <input placeholder="Skill" [formControlName]="i">
+                    <button type="button" class="delete-button" (click)="deleteSkill(i)">Delete Skill</button>
+                </div>
+            </div>
+            <button type="button" (click)="addSkill()">Add Skill</button>
+        </div>
+        <div formArrayName="address">
+            <label for="address">Address</label>
+            <div *ngFor="let address of address.controls; let i = index" [formGroupName]="i">
+                <span>Address {{i+1}}</span>
+                <div>
+                    <label for="state">State</label>
+                    <input type="text" placeholder="State" formControlName="state">
+                </div>
+                <div>
+                    <label for="district">District</label>
+                    <input type="text" placeholder="District" formControlName="district">
+                </div>
+                <div>
+                    <label for="location">Location</label>
+                    <textarea name="location" formControlName="location"></textarea>
+                </div>
+                <button type="button" class="delete-button" (click)="deleteAddress(i)">Delete Address</button>
+                <hr>
+            </div>
+            <button type="button" (click)="addAddress()">Add Address</button>
+        </div>
+        <div>
+            <label for="gender">Gender</label>
+            <select formControlName="gender">
+                <option value="" disabled>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="button-group">
+            <button type="submit">{{data ? "Update" : "Add"}}</button>
+            <button type="button" mat-dialog-close>Close</button>
+        </div>
     </form>
 </div>

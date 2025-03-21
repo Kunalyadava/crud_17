@@ -1,14 +1,177 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
+/* General Form Styling */
+.form-group {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Form Header */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form Field Styling */
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
     width: 100%;
-  }
-  
-  .example-full-width {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+input[type="password"] {
     width: 100%;
-  }
-  
-  .form-group{
-    margin: 10px 10px 10px 10px;
-  }
- 
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+/* Button Styling */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button[type="button"] {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover {
+    background-color: #e53935;
+}
+
+button.delete-button {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+button.delete-button:hover {
+    background-color: #e64a19;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-group {
+        padding: 15px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    button[type="submit"],
+    button[type="button"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button[type="submit"]:last-child,
+    button[type="button"]:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Masked input field styling */
+.masked-input {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+/* Form Array Styling */
+form div[formArrayName] {
+    margin-top: 20px;
+}
+
+form div[formArrayName] label {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+form div[formArrayName] .delete-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+/* Optional: Styling for Address Section */
+hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #f0f0f0;
+}
+
+/* Form Group for Add and Delete */
+form div > div {
+    margin-bottom: 15px;
+}
